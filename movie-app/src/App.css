@@ -1,90 +1,94 @@
+:root
+{
+  --posterWidth: 13em;
+  --posterHeight: 18em;
+}
+
 .App {
-  background-color:#222f3e;
+  height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
+  overflow: hidden;
+  background-color: black;
 }
 
-.Header
+.Logo
 {
-  display: flex;
-  width: 100%;
-  position: absolute;
-  height: 4em;
-  background-color: rgb(30, 27, 27);
-  flex-direction: row;
-  justify-content: space-between;
-}
-.logo-container
-{
-  display: flex;
-  align-self: center;
-  margin-left: 0.3rem;
-  height: 2.5rem;
-  width: 2.5rem;
+  margin-left: 2rem;
+  margin-right: 0.5rem;
 }
 
-.logo
+.SearchSection
 {
-  align-self: center;
-  margin-left: 0.3rem;
-  height: 100%;
-  width: 2.5rem;
-  object-fit: fill;
-}
-
-.movieTitle
-{
-  font-size: 1.7rem;
-  padding: 0.3rem;
-  white-space: nowrap;
-  color: wheat;
- 
-}
-.searchBox
-{
-  align-self: flex-end;
-  background-color: #c8d6e5;
-  width: 25rem;
-  height: 1.5rem;
-  margin-bottom: 0.5rem;
   margin-right: 1rem;
-  float: right;
-  border: none;
-  color: whitesmoke;
-  font-weight: bold;
-}
-.searchBox::placeholder
-{
-  color: bisque;
-}
-.searchBox:focus
-{
-  border: 0px;
-  outline: none;
-  background-color: #8395a7;
-  
 }
 
 .Poster-container
 {
   margin-top: 5rem;
-  display: flex;
+  display:inline-flex;
   flex-direction: row;
-  justify-content: space-around;
-  flex-wrap:wrap;
-  align-items: center;
+  overflow-x: scroll;
 }
-
+.Favourites-container
+{
+  margin-top: 3rem;
+}
+::-webkit-scrollbar
+{
+  display: none;
+}
 .Poster
 {
+  position: relative;
+  width: var(--posterWidth);
+  height: var(--posterHeight);
   margin-top: 1rem;
   margin-left: 0.8rem;
   align-self: normal;
 }
 
+.Poster:hover .Favourites
+{
+  visibility: visible;
+}
+
 .PosterImage
 {
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  height: var(--posterHeight);
+  width: var(--posterWidth);
+}
+
+.Favourites
+{
+  align-content: center;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  background: rgba(295, 155, 18, 0.6);
+  bottom: 0;
+  width: calc(var(--posterWidth) - 1rem);
+  height: 3em;  
+  color: azure;
+  position: absolute;
+  z-index: 2;
+  visibility: hidden;
+}
+
+.WrapLike
+{
+  position: absolute;
+  font-size: larger;
+}
+.LikeImg
+{
+  position: relative;
+  float: left;
+}
+
+.Like
+{
+  position: relative;
+  float: left;
 }
