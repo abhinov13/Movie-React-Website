@@ -1,94 +1,133 @@
-:root
-{
+:root {
   --posterWidth: 13em;
   --posterHeight: 18em;
+}
+
+body {
+  overflow: hidden;
+}
+
+.customNav
+{
+  background: rgba(100,0,0,0.07);
+
 }
 
 .App {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
+  flex-basis: 2%;
   overflow: hidden;
   background-color: black;
+  overflow: hidden;
 }
 
-.Logo
-{
+.backgroundImg {
+  position: absolute;
+  background-color:gray;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position-y: center;
+  filter: blur(10px);
+  background-blend-mode:darken;
+}
+
+.Logo {
   margin-left: 2rem;
   margin-right: 0.5rem;
 }
 
-.SearchSection
-{
+.SearchSection {
   margin-right: 1rem;
 }
 
-.Poster-container
-{
-  margin-top: 5rem;
-  display:inline-flex;
-  flex-direction: row;
+.Poster-container {
   overflow-x: scroll;
+  overflow-y: hidden;
 }
-.Favourites-container
-{
-  margin-top: 3rem;
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
-::-webkit-scrollbar
-{
+
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.Poster-border {
+  overflow: visible;
+  position: relative;
+  animation: appear 500ms;
+  transition: transform 0.3s;
+}
+
+.Poster {
+  border-radius: 0.5em;
+  width: 100%;
+  height: 13em;
+  overflow: hidden;
+}
+
+.Favourites {
+  position: absolute;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  z-index: 2;
+  top: 11.5em;
+  background-color: rgba(54, 53, 53, 0.90);
+  transition: ease 0.5s;
+  opacity: 0;
+}
+
+.Poster-border:hover {
+  transform: scale(1.15);
+}
+
+.Poster-border:hover .Favourites {
+  opacity: 1;
+}
+
+::-webkit-scrollbar {
   display: none;
 }
-.Poster
-{
-  position: relative;
-  width: var(--posterWidth);
-  height: var(--posterHeight);
-  margin-top: 1rem;
-  margin-left: 0.8rem;
-  align-self: normal;
-}
 
-.Poster:hover .Favourites
-{
-  visibility: visible;
-}
-
-.PosterImage
-{
-  position: absolute;
-  height: var(--posterHeight);
-  width: var(--posterWidth);
-}
-
-.Favourites
-{
-  align-content: center;
-  padding-top: 1rem;
-  padding-left: 1rem;
-  background: rgba(295, 155, 18, 0.6);
-  bottom: 0;
-  width: calc(var(--posterWidth) - 1rem);
-  height: 3em;  
+.Like {
+  font-size: small;
   color: azure;
-  position: absolute;
-  z-index: 2;
-  visibility: hidden;
 }
 
-.WrapLike
-{
-  position: absolute;
-  font-size: larger;
-}
-.LikeImg
-{
-  position: relative;
-  float: left;
+.LikeImg {
+  margin-left: 0.3rem;
+  margin-bottom: 0.2rem;
+  height: 1rem;
+  width: 1rem;
 }
 
-.Like
-{
-  position: relative;
-  float: left;
+.Movie-container {
+  width: 100vw;
+  position: absolute;
+  top: 3.7em;
+  height: 15em;
+}
+
+.Favourites-container {
+  width: 100vw;
+  position: absolute;
+  top: 22em;
+  height: 15em;
 }
