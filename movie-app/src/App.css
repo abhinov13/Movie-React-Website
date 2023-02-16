@@ -7,10 +7,21 @@ body {
   overflow: hidden;
 }
 
+a
+{
+  cursor: context-menu;
+}
+
 .customNav
 {
   background: rgba(100,0,0,0.07);
 
+}
+
+.h-90
+{
+  height: 90%;
+  margin-top: 18%;
 }
 
 .App {
