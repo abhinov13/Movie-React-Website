@@ -1,6 +1,9 @@
 :root {
-  --posterWidth: 13em;
-  --posterHeight: 18em;
+  --movieContainerHeight: 40vh;
+  --searchTopMargin: 10vh;
+  --favouriteTopMargin: 55vh;
+  --cardHeight: 15em;
+  --cardWidth: 10em;
 }
 
 body {
@@ -12,30 +15,42 @@ a
   cursor: context-menu;
 }
 
+.PosterImage
+{
+  height: 100%;
+  width: 100%;
+  background-color: rgba(57, 46, 74, 0.3);
+}
+
 .customNav
 {
   background: rgba(100,0,0,0.07);
 
 }
 
-.h-90
+.FavTitle
 {
-  height: 90%;
-  margin-top: 18%;
+  position: absolute;
+  color:white;
+  margin-left: 1em;
+  font-size: 2em;
+  margin-top: 42vh;
+  z-index: 10;
+  opacity: 1;
+  padding-right: 2em;
+  padding-left: 0.5em;
+  border-radius: 0.5em;
+  background-color:  rgba(54, 53, 53, 0.30);
 }
+
 
 .App {
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-basis: 2%;
-  overflow: hidden;
   background-color: black;
-  overflow: hidden;
 }
 
 .backgroundImg {
+  z-index: 0;
   position: absolute;
   background-color:gray;
   height: 100vh;
@@ -56,6 +71,10 @@ a
 }
 
 .Poster-container {
+  display: flex;
+  flex-direction: row;
+  min-width: 0%;
+  padding-top: 2%;
   overflow-x: scroll;
   overflow-y: hidden;
 }
@@ -81,8 +100,10 @@ a
 }
 
 .Poster-border {
-  overflow: visible;
-  position: relative;
+  overflow-y: hidden;
+  flex-shrink: 0;
+  height: var(--cardHeight);
+  width: var(--cardWidth);
   animation: appear 500ms;
   transition: transform 0.3s;
 }
@@ -90,16 +111,18 @@ a
 .Poster {
   border-radius: 0.5em;
   width: 100%;
-  height: 13em;
+  height: 100%;
   overflow: hidden;
 }
 
 .Favourites {
+  visibility: hidden;
+  height: 1.8em;
+  width: 100%;
   position: absolute;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-  z-index: 2;
-  top: 11.5em;
+  top: 88%;
   background-color: rgba(54, 53, 53, 0.90);
   transition: ease 0.5s;
   opacity: 0;
@@ -110,7 +133,12 @@ a
 }
 
 .Poster-border:hover .Favourites {
+  visibility: visible;
   opacity: 1;
+}
+
+.Poster-border:hover .MovieName {
+  visibility: visible;
 }
 
 ::-webkit-scrollbar {
@@ -118,6 +146,7 @@ a
 }
 
 .Like {
+  overflow: hidden;
   font-size: small;
   color: azure;
 }
@@ -129,16 +158,27 @@ a
   width: 1rem;
 }
 
+.MovieName
+{
+  visibility: hidden;
+  position: absolute;
+  top: 30px;
+  color: white;
+  font-size: 2em;
+}
+
 .Movie-container {
+  overflow: hidden;
   width: 100vw;
   position: absolute;
-  top: 3.7em;
-  height: 15em;
+  top: var(--searchTopMargin);
+  height: var(--movieContainerHeight);
 }
 
 .Favourites-container {
+  overflow: hidden;
   width: 100vw;
   position: absolute;
-  top: 22em;
-  height: 15em;
+  top: var(--favouriteTopMargin);
+  height: var(--movieContainerHeight);
 }

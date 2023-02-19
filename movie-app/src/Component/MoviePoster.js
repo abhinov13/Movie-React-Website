@@ -1,20 +1,35 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const MoviePoster = (props) => {
+    const titleList = useRef([]);
+    titleList.current = props.favourites.map((movie) => movie.Title);
+
     return (<>
-        <div className="d-flex flex-row h-100 Poster-container">
+        <div className="h-100 Poster-container">
             {props.movies.map(
                 (movie) => (
-                    <div className="mt-3 mx-3 Poster-border" onMouseEnter={() => props.updateBackground(movie.Poster)} onMouseLeave={() => { props.resetBackground() }}>
+                    <div className="mx-4 Poster-border" onMouseEnter={() => props.updateBackground(movie.Poster)} onMouseLeave={() => { props.resetBackground() }}>
 
                         <div className="Poster">
                             <a href={"https://www.imdb.com/title/" + movie.imdbID + "/"} target="_blank" >
-                                <img src={movie.Poster} className="PosterImage h-100" />
+                                {
+                                    movie.Poster == "N/A" ?
+                                        <>
+                                            <img src="notFound.svg" className="PosterImage" />
+                                            <div className="MovieName">{movie.Title}</div>
+                                        </>
+                                        :
+                                        <>
+                                            <img src={movie.Poster} className="PosterImage" />
+
+                                        </>
+
+                                }
                             </a>
                             <div className='Favourites w-100'>
                                 <div className="WrapLike" onClick={() => props.favouriteHandler(movie)}>
                                     {
-                                        props.favourites.includes(movie) ?
+                                        titleList.current.includes(movie.Title) ?
                                             <>
                                                 <img src="heart-fill-red.svg" className="LikeImg" />
                                                 <span className="Like"> Add to Favourites</span>
@@ -27,9 +42,6 @@ const MoviePoster = (props) => {
                                     }
                                 </div>
                             </div>
-                        </div>
-
-                        <div className="MovieInfo">
                         </div>
                     </div>
                 )
