@@ -1,9 +1,9 @@
 :root {
   --movieContainerHeight: 40vh;
-  --searchTopMargin: 10vh;
-  --favouriteTopMargin: 55vh;
-  --cardHeight: 15em;
-  --cardWidth: 10em;
+  --searchTopMargin: 3vh;
+  --favouriteTopMargin: 2vh;
+  --cardHeight: 30vh;
+  --cardWidth: 20vh;
 }
 
 body {
@@ -23,18 +23,18 @@ a
 }
 
 .customNav
-{
+{ 
   background: rgba(100,0,0,0.07);
-
 }
 
 .FavTitle
 {
-  position: absolute;
+  position: relative;
   color:white;
   margin-left: 1em;
-  font-size: 2em;
-  margin-top: 42vh;
+  width: fit-content;
+  font-size: 4vh;
+  margin-top: 1vh;
   z-index: 10;
   opacity: 1;
   padding-right: 2em;
@@ -66,8 +66,16 @@ a
   margin-right: 0.5rem;
 }
 
-.SearchSection {
-  margin-right: 1rem;
+.searchContainer
+{
+  margin-left: 4vw;
+  margin-right: 1vw;
+}
+
+.searchBar
+{
+  margin-left: auto;
+  margin-top: 1vh;
 }
 
 .Poster-container {
@@ -168,9 +176,9 @@ a
 }
 
 .Movie-container {
-  overflow: hidden;
+  overflow-x: hidden;
   width: 100vw;
-  position: absolute;
+  position: relative;
   top: var(--searchTopMargin);
   height: var(--movieContainerHeight);
 }
@@ -178,7 +186,7 @@ a
 .Favourites-container {
   overflow: hidden;
   width: 100vw;
-  position: absolute;
+  position: relative;
   top: var(--favouriteTopMargin);
   height: var(--movieContainerHeight);
 }
