@@ -2,8 +2,9 @@
   --movieContainerHeight: 40vh;
   --searchTopMargin: 3vh;
   --favouriteTopMargin: 2vh;
-  --cardHeight: 30vh;
-  --cardWidth: 20vh;
+  --cardHeight: 85%;
+  --cardWidth: 12%;
+  --collapsedHeight: 65vh;
 }
 
 body {
@@ -34,9 +35,7 @@ a
   margin-left: 1em;
   width: fit-content;
   font-size: 4vh;
-  margin-top: 1vh;
   z-index: 10;
-  opacity: 1;
   padding-right: 2em;
   padding-left: 0.5em;
   border-radius: 0.5em;
@@ -45,6 +44,7 @@ a
 
 
 .App {
+  overflow-y: scroll;
   height: 100vh;
   background-color: black;
 }
@@ -84,7 +84,8 @@ a
   min-width: 0%;
   padding-top: 2%;
   overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-y:visible;
+  padding-top: 3vh;
 }
 
 @keyframes appear {
@@ -108,10 +109,8 @@ a
 }
 
 .Poster-border {
-  overflow-y: hidden;
+  overflow-y: visible;
   flex-shrink: 0;
-  height: var(--cardHeight);
-  width: var(--cardWidth);
   animation: appear 500ms;
   transition: transform 0.3s;
 }
@@ -125,12 +124,10 @@ a
 
 .Favourites {
   visibility: hidden;
-  height: 1.8em;
   width: 100%;
   position: absolute;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-  top: 88%;
   background-color: rgba(54, 53, 53, 0.90);
   transition: ease 0.5s;
   opacity: 0;
@@ -160,11 +157,12 @@ a
 }
 
 .LikeImg {
-  margin-left: 0.3rem;
-  margin-bottom: 0.2rem;
-  height: 1rem;
-  width: 1rem;
+  position: absolute;
+  margin-left: 43.5%;
+  margin-top: 2%;
+  width: 13%;
 }
+
 
 .MovieName
 {
@@ -176,11 +174,12 @@ a
 }
 
 .Movie-container {
-  overflow-x: hidden;
+  overflow: hidden;
   width: 100vw;
   position: relative;
-  top: var(--searchTopMargin);
-  height: var(--movieContainerHeight);
+  margin-top: var(--searchTopMargin);
+  margin-top: 8vh;
+  height: var(--collapsedHeight);
 }
 
 .Favourites-container {
@@ -188,5 +187,56 @@ a
   width: 100vw;
   position: relative;
   top: var(--favouriteTopMargin);
-  height: var(--movieContainerHeight);
+  height: var(--collapsedHeight);
+}
+
+
+@media screen and (orientation: portrait) {
+  .Movie-container,.Favourites-container
+  {
+    height: 35vh;
+  }
+
+  .Movie-container
+  {
+    margin-top: 3vh;
+  }
+
+  .Favourites
+  {
+    top: 89%;
+    height: 11%;
+    width: 100%;
+  }
+
+  .Poster-border
+  {
+    width: 30%;
+    height: 85%;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .Movie-container,.Favourites-container
+  {
+    height: 35vh;
+  }
+
+  .Movie-container
+  {
+    margin-top: 3vh;
+  }
+
+  .Favourites
+  {
+    top:85%;
+    height: 15%;
+    width: 100%;
+  }
+
+  .Poster-border
+  {
+    width: 11%;
+    height: 85%;
+  }
 }

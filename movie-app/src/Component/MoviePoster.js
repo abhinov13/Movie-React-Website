@@ -26,21 +26,19 @@ const MoviePoster = (props) => {
 
                                 }
                             </a>
-                            <div className='Favourites w-100'>
-                                <div className="WrapLike" onClick={() => props.favouriteHandler(movie)}>
+                            <div className='Favourites w-100' onClick={() => props.favouriteHandler(movie)}>
                                     {
                                         titleList.current.includes(movie.Title) ?
                                             <>
                                                 <img src="heart-fill-red.svg" className="LikeImg" />
-                                                <span className="Like"> Add to Favourites</span>
+                                                
                                             </>
                                             :
                                             <>
                                                 <img src="heart-fill-blue.svg" className="LikeImg" />
-                                                <span className="Like"> Add to Favourites</span>
+                                                
                                             </>
                                     }
-                                </div>
                             </div>
                         </div>
                     </div>
