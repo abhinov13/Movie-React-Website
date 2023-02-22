@@ -38,7 +38,6 @@ function App() {
 
 
   const processFavourite = (movie) => {
-    console.log(movie);
     if (favourites.includes(movie) == false) {
       setFavourites([...favourites, movie]);
     }
@@ -79,7 +78,6 @@ function App() {
 
   const doSearch = (e) => {
     e.preventDefault();
-    console.log("trying to search " + searchInput.current.value);
     setSearch(searchInput.current.value);
   }
 
