@@ -47,16 +47,10 @@ function App() {
       setFavourites(newFav);
     }
   }
-  const executed = useRef(false);
+
   useEffect(
     () => {
-      if (executed.current == false) {
-        executed.current = true;
-      }
-      else {
         addToLocal();
-      }
-
     }, [favourites]
   )
 
